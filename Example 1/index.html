@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="StudentApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular Application</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/ngDialog-theme-default.css">
+    <link rel="stylesheet" type="text/css" href="css/ngDialog-theme-plain.css">
+
+    <script type="text/javascript" src="lib/angular.js"></script>
+    <script type="text/javascript" src="lib/ngDialog.js"></script>
+	<script type="text/javascript" src="js/controllers.js"></script>
+</head>
+
+<body>
+<div class="main" ng-controller="StudentManagerController">
+	<ul> 
+        <li class="itemHolder" ng-repeat="student in Students">
+            <div>
+                <h3> {{student.name }}</h3>
+            </div>
+
+            <a href="" ng-controller="ShowDetailsController" ng-click="open(student.ID)">Show Details</a>
+        </li>
+    </ul>
+</div>
+
+<!-- Templates -->
+<script type="text/ng-template" id="StudentInfoDialog">
+    <div class="ngdialog-message">
+        <h3>Student Details</h3>
+        <p ng-show="ngDialogData.id">ID: <code>{{ngDialogData.id}}</code></p>
+        <p ng-show="ngDialogData.name">Name: <code>{{ngDialogData.name}}</code></p>
+        <p ng-show="ngDialogData.description">Description: <code>{{ngDialogData.description}}</code></p>
+    </div>
+
+    <div class="ngdialog-buttons">
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="close()">Close</button>
+    </div>
+</script>
+
+</body>
+</html>
